@@ -13,6 +13,29 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              backgroundImage: {
+                'hero-pattern': "url('https://tourista.co/img/picoballz.webp')",
+              },
+              colors: {
+                clifford: '#da373d',
+                tourista: '#FFCB0B',
+                viacolor: '#E48FA0',
+                tourPurple: '#7039aa',
+                lightPurple: '#8a52ba',
+                blueSky: '#79def2',
+                darkSky: '#1c0f36'
+              },
+              animation: {
+                'bounce-slow': 'bounce 3s linear infinite',
+              }
+            }
+          }
+        }
+      </script>
 
     <!-- <script src="public/js/menu.js"></script> -->
     <style>
