@@ -1,11 +1,11 @@
 <%- include('partials/Header') %>
     <main>
       <section>
-        <nav class="relative z-50 bg-white py-6">
+        <nav class="relative z-50 bg-white py-2">
           <div class="container mx-auto px-4">
             <div class="relative flex items-center">
               <a class="inline-block text-lg font-bold" href="#">
-                <img class="h-10" src="https://tourista.co/img/tl-01.png" alt="" width="auto" />
+                <img class="h-8" src="https://tourista.co/img/tl-01.png" alt="" width="auto" />
               </a>
               <div class="ml-auto xl:hidden">
                 <button class="navbar-burger flex h-12 w-12 items-center justify-center rounded-md bg-gray-100 transition duration-200 hover:bg-gray-200">
@@ -106,11 +106,11 @@
             </h1>
           </div>
       
-          <div class="mx-4 mb-4 md:mt-20 flex flex-col items-center justify-center gap-4 rounded-3xl bg-purple-200 bg-opacity-15 p-4 md:grid md:grid-cols-3 md:flex-row md:bg-purple-300 md:bg-opacity-90 md:p-8 md:mx-20 md:mb-40">
+          <div class="mx-4 mb-20 md:mt-20 flex flex-col items-center justify-center gap-4 rounded-3xl bg-purple-200 bg-opacity-15 p-4 md:grid md:grid-cols-3 md:flex-row md:bg-purple-300 md:bg-opacity-90 md:p-8 md:mx-20 md:mb-40">
             <div class="mx-2 w-full">
               <label for="from" class="mb-2 ml-2 block md:text-lg md:font-semibold">Where am I From?</label>
               <div class="relative">
-                <select id="from" name="from" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-2 pl-3 pr-10 md:text-lg focus:border-blue-500 focus:outline-none">
+                <select id="from" name="from" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 md:text-lg focus:border-blue-500 focus:outline-none">
                   <option value="Bangladesh">Bangladesh - BD</option>
                   <option value="India">India - IN</option>
                   <!-- Add more options as needed -->
@@ -125,7 +125,7 @@
             <div class="mx-2 w-full">
               <label for="to" class="mb-2 ml-2 block md:text-lg md:font-semibold">Where am I Going?</label>
               <div class="relative">
-                <select id="to" name="to" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-2 pl-3 pr-10 md:text-lg text-gray-600 focus:border-blue-500 focus:outline-none">
+                <select id="to" name="to" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 md:text-lg text-gray-600 focus:border-blue-500 focus:outline-none">
                   <option value="Thailand">Thailand - TH</option>
                   <option value="Italy">Italy - IT</option>
                   <!-- Add more options as needed -->
@@ -137,8 +137,8 @@
                 </div>
               </div>
             </div>
-            <div class="w-full rounded-3xl border bg-purple-700 md:mt-8">
-              <button class="w-full px-2 py-2 md:text-lg md:font-semibold text-white" id="submitbtn">Get Started!</button>
+            <div class="w-full rounded-3xl bg-gradient-to-r from-violet-500 to-purple-600 md:mt-8">
+              <button class="w-full px-2 py-3 md:text-lg md:font-semibold text-white" id="submitbtn">Get Started!</button>
             </div>
           </div>
         </div>
