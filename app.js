@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   //let tracking = req.query.tracking;
-  res.render("dash");
+  res.render("home");
 });
 
 //app.use(visaRoutes)
