@@ -1,0 +1,22 @@
+#animtext {
+  top: 5vh;
+  left: 50vh;
+  opacity: 0;
+  animation: fade-in 2.3s ease-in-out forwards infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    top: 20vh;
+  }
+  70%,
+  90% {
+    opacity: 1;
+    top: 5vh;
+  }
+  100% {
+    opacity: 0;
+    top: 5vh;
+  }
+}
