@@ -56,6 +56,11 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.get("/expert", (req, res) => {
+  //let tracking = req.query.tracking;
+  res.render("expert");
+});
+
 //app.use(visaRoutes)
 
 app.use((req, res, next) => {
