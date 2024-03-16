@@ -100,10 +100,10 @@
       </section>
       <!--Header and Menu -->
       <!--Expert Help Form -->
-      <section>
+      <section x-data="$store.expertHelpStore">
         <div class="flex flex-col items-center justify-center my-4 bg-gray-100">
           <div class="mt-10">
-            <h1 class="m-2 ml-2 block p-4 md:text-2xl md:font-semibold text-purple-700 ">Complete this form to Meet Our Expert Team</h1>
+            <h1 class="m-2 ml-2 block p-4 text-xl md:text-2xl md:font-semibold text-purple-700 ">Complete this form to Meet Our Expert Team</h1>
           </div>
           <div class="grid grid-cols-1 pt-4 lg:grid-cols-2 lg:gap-4">
             <div class="flex flex-col items-start justify-start">
@@ -156,7 +156,7 @@
             </div>
             <div class="flex flex-col items-start justify-start lg:col-span-2 mb-10">
               <div class="w-full rounded-xl mt-4 bg-gradient-to-r from-violet-500 to-purple-600 md:mt-8">
-                    <button class="w-full px-2 py-3 md:text-lg md:font-semibold text-white" id="submitbtn">Get Started!</button>
+                    <button class="w-full px-2 py-3 md:text-lg md:font-semibold text-white" id="submitbtn" @click="$store.expertHelpStore.submitForm()">Get Started!</button>
                   </div>
             </div>
           </div>
@@ -288,8 +288,6 @@
     </section>
     </main>
 
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="public/js/expert.js"></script>
 <%- include('partials/Footer') %>
 
