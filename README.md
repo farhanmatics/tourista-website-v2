@@ -1,3 +1,5 @@
+![alt text](image.png)
+
 # Tourista Website template
 
 This is a Node.js project with an HTTP server.
