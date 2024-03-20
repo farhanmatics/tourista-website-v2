@@ -1,6 +1,13 @@
-# Node.js template
+# Tourista Website template
 
 This is a Node.js project with an HTTP server.
+
+## Sandbox used:
+
+- Tailwind
+- Express
+- ejs Template
+- sequelize
 
 Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io).
 
