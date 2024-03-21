@@ -4,7 +4,10 @@
 
 document.addEventListener("alpine:init", () => {
   Alpine.store("expertHelpStore", {
-    countries: [],
+    countries: ["Thailand", "United Kingdom", "Sweden", "Singapore"],
+    countrySearch: "",
+
+    open: false,
     fullname: "",
     email: "",
     mobile: "",
@@ -23,6 +26,12 @@ document.addEventListener("alpine:init", () => {
     toastMessage: "",
 
     loading: false,
+
+    searchCountry() {
+      return this.countries.filter((i) =>
+        i.toLowerCase().startsWith(this.countrySearch.toLowerCase()),
+      );
+    },
 
     submitForm() {
       console.log("clicked");
