@@ -2,7 +2,7 @@
 
 # Tourista Website template
 
-This is a Node.js project with an HTTP server.
+No, it's not rocket science, we just make the process easy and efficient to faster navigate through the requirements, eligibility checklists, visa fee payments and needful documentations. All these micro-managing capabilities blended with technology provides a faster visa approval ratio
 
 ## Sandbox used:
 
@@ -10,8 +10,6 @@ This is a Node.js project with an HTTP server.
 - Express
 - ejs Template
 - sequelize
-
-Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io).
 
 ## How does this work?
 
