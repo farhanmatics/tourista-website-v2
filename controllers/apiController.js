@@ -11,3 +11,13 @@ module.exports.countries_get = async (req, res) => {
   );
   res.json(countries);
 };
+
+module.exports.professions_get = async (req, res) => {
+  const professions = await sequelize2.query(
+    "select id, profession from professions",
+    {
+      type: sequelize2.QueryTypes.SELECT,
+    },
+  );
+  res.json(professions);
+};

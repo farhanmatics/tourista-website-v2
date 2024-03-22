@@ -23,17 +23,11 @@
             </div>
             <div class="flex flex-col items-start justify-start">
               <label for="profession" class="mb-2 ml-2 block md:text-lg md:font-semibold">Profession</label>
-              <select id="profession" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
-                <option value="Bangladesh">Bangladesh - BD</option>
-                <option value="India">India - IN</option>
-                <!-- Add more options as needed -->
-              </select>
-            </div>
-            <div class="flex flex-col items-start justify-start">
-              <label for="profession" class="mb-2 ml-2 block md:text-lg md:font-semibold">Visa Category</label>
-              <select id="profession" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
-                <option value="Bangladesh">Tourist Visa</option>
-                <option value="India">Medical Visa</option>
+              <select x-init="loadProfessions" x-model="selectedProfession" id="profession" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
+                <option value="-1">Select Your Profession</option>
+                <template x-for="pro in profession" :key="pro.id">
+                  <option :value="pro.id" x-text="pro.profession"></option>
+                </template>
                 <!-- Add more options as needed -->
               </select>
             </div>
@@ -41,15 +35,24 @@
               <label for="country" class="mb-2 ml-2 block md:text-lg md:font-semibold">Country</label>
               <input type="text" x-model="countrySearch" @click="open = true" id="country" name="country" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" placeholder="Select a country"/>
               <div class="relative">
-                <ul x-cloak x-show="open" x-init="loadCountries" x-transition @click.outside="open = false" class="absolute left-1 mt-1 border border-gray-200 z-20 bg-white">
+                <ul x-cloak x-show="open" x-init="loadCountries" x-transition @click.outside="open = false" class="absolute left-1 mt-1 border border-gray-200 z-20 bg-white h-96 overflow-auto">
                   <template x-for="country in searchCountry()">
-                    <li x-text="country.visa_country" class="md:text-lg md:font-semibold px-4 py-3 hover:bg-gray-100 w-full cursor-pointer md:w-72 w-40" @click="countrySearch = country.visa_country; open = false;"></li>
+                    <li x-text="country.visa_country" class="md:text-lg md:font-semibold px-4 py-3 hover:bg-gray-100 w-full cursor-pointer md:w-72 w-40" @click="countrySearch = country.visa_country; open = false; selectedCountry = country.id"></li>
                   </template>
                 </ul>
               </div>
-              
-            
             </div>
+            <div class="flex flex-col items-start justify-start">
+              <label for="vcategory" class="mb-2 ml-2 block md:text-lg md:font-semibold">Visa Category</label>
+              <select id="vcategory" name="vcategory" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
+                <option value="Tourist Visa" class="font-medium md:text-lg">Tourist Visa</option>
+                <option value="Business Visa" class="font-medium md:text-lg">Business Visa</option>
+                <option value="Medical Visa" class="font-medium md:text-lg">Medical Visa</option>
+                <option value="Student Visa" class="font-medium md:text-lg">Student Visa</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            
             <div class="flex flex-col items-start justify-start lg:col-span-2">
               <label for="helptype" class="mb-2 ml-2 block md:text-lg md:font-semibold">Help Type</label>
               <select id="helptype" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
