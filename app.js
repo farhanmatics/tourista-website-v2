@@ -10,6 +10,7 @@ const cors = require("cors");
 require("dotenv").config();
 //const fetch = require('node-fetch')
 
+const apiRoutes = require("./routes/apiRoutes");
 //const visaRoutes = require('./routes/visaRoutes')
 //const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
@@ -61,7 +62,7 @@ app.get("/expert", (req, res) => {
   res.render("expert");
 });
 
-//app.use(visaRoutes)
+app.use("/api/", apiRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
