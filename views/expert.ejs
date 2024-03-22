@@ -43,7 +43,7 @@
               <div class="relative">
                 <ul x-cloak x-show="open" x-transition @click.outside="open = false" class="absolute left-1 mt-1 border border-gray-200 z-20 bg-white">
                   <template x-for="country in searchCountry()">
-                    <li x-text="country" class="md:text-lg font-semibold px-4 py-3 hover:bg-gray-100 w-full" @click="countrySearch = country; open = false;"></li>
+                    <li x-text="country" class="md:text-lg font-semibold px-4 py-3 hover:bg-gray-100 w-full cursor-pointer md:w-72" @click="countrySearch = country; open = false;"></li>
                   </template>
                 </ul>
               </div>
