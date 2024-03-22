@@ -27,12 +27,6 @@ document.addEventListener("alpine:init", () => {
 
     loading: false,
 
-    // filteredCountryOptions() {
-    //   return this.countries.filter((country) => {
-    //     return country.includes(this.countrySearch.toLowerCase());
-    //   });
-    // },
-
     searchCountry() {
       return this.countries.filter((i) =>
         i.visa_country
@@ -52,6 +46,21 @@ document.addEventListener("alpine:init", () => {
         .then((result) => {
           console.log(result);
           this.countries = result;
+        })
+        .catch((error) => console.log("error", error));
+    },
+
+    loadProfessions() {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch("/api/professions", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          this.profession = result;
         })
         .catch((error) => console.log("error", error));
     },
