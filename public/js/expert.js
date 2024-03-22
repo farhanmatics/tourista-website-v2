@@ -27,6 +27,12 @@ document.addEventListener("alpine:init", () => {
 
     loading: false,
 
+    // filteredCountryOptions() {
+    //   return this.countries.filter((country) => {
+    //     return country.includes(this.countrySearch.toLowerCase());
+    //   });
+    // },
+
     searchCountry() {
       return this.countries.filter((i) =>
         i.toLowerCase().startsWith(this.countrySearch.toLowerCase()),
