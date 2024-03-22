@@ -4,7 +4,7 @@
 
 document.addEventListener("alpine:init", () => {
   Alpine.store("expertHelpStore", {
-    countries: ["Thailand", "United Kingdom", "Sweden", "Singapore"],
+    countries: [],
     countrySearch: "",
 
     open: false,
@@ -27,10 +27,33 @@ document.addEventListener("alpine:init", () => {
 
     loading: false,
 
+    // filteredCountryOptions() {
+    //   return this.countries.filter((country) => {
+    //     return country.includes(this.countrySearch.toLowerCase());
+    //   });
+    // },
+
     searchCountry() {
       return this.countries.filter((i) =>
-        i.toLowerCase().startsWith(this.countrySearch.toLowerCase()),
+        i.visa_country
+          .toLowerCase()
+          .startsWith(this.countrySearch.toLowerCase()),
       );
+    },
+
+    loadCountries() {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch("/api/countries", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          this.countries = result;
+        })
+        .catch((error) => console.log("error", error));
     },
 
     submitForm() {
