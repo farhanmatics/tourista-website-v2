@@ -66,11 +66,11 @@ document.addEventListener("alpine:init", () => {
     },
 
     submitForm() {
-      console.log("clicked");
+      console.log("clicked", this.selectedCountry);
       Toastify({
         text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
         duration: 9000,
-        destination: "https://mntlgc-8080.csb.app/",
+        destination: "https://stts3g-8080.csb.app/",
         newWindow: false,
         close: false,
         gravity: "top", // `top` or `bottom`
