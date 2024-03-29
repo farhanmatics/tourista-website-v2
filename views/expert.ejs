@@ -13,15 +13,15 @@
               <div class="flex flex-col items-start justify-start">
                 <label for="fullname" class="mb-2 ml-2 block md:text-lg md:font-semibold">Full Name</label>
                 <meta name="csrf-token" content="<%= csrfToken %>">
-                <input type="text" id="fullname" name="fullname" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+                <input type="text" id="fullname" x-model="fullname" name="fullname" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
               </div>
               <div class="flex flex-col items-start justify-start">
                 <label for="email" class="mb-2 ml-2 block md:text-lg md:font-semibold">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+                <input type="email" x-model="email" id="email" name="email" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
               </div>
               <div class="flex flex-col items-start justify-start">
                 <label for="mobile" class="mb-2 ml-2 block md:text-lg md:font-semibold">Mobile</label>
-                <input type="number" id="mobile" name="mobile" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+                <input type="number" x-model="mobile" id="mobile" name="mobile" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
               </div>
               <div class="flex flex-col items-start justify-start">
                 <label for="profession" class="mb-2 ml-2 block md:text-lg md:font-semibold">Profession</label>

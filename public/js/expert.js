@@ -92,6 +92,10 @@ document.addEventListener("alpine:init", () => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          this.fullname = "";
+          this.mobile = "";
+          this.email = "";
+          this.comment = "";
           this.loading = false;
           Toastify({
             text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
