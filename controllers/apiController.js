@@ -21,3 +21,10 @@ module.exports.professions_get = async (req, res) => {
   );
   res.json(professions);
 };
+
+module.exports.submit_form_post = async (req, res) => {
+  console.log(req.body);
+  res.json({
+    success: true,
+  });
+};

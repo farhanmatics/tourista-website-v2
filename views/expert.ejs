@@ -12,7 +12,7 @@
             <div class="grid grid-cols-1 pt-4 lg:grid-cols-2 lg:gap-4">
               <div class="flex flex-col items-start justify-start">
                 <label for="fullname" class="mb-2 ml-2 block md:text-lg md:font-semibold">Full Name</label>
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <meta name="csrf-token" content="<%= csrfToken %>">
                 <input type="text" id="fullname" name="fullname" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
               </div>
               <div class="flex flex-col items-start justify-start">

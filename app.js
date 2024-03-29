@@ -67,7 +67,7 @@ app.get("/expert", csrfProtect, (req, res) => {
   res.render("expert", { csrfToken: req.csrfToken() });
 });
 
-app.use("/api/", apiRoutes);
+app.use("/api/", formParser, csrfProtect, apiRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
