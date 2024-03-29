@@ -4,75 +4,78 @@
       <%- include('partials/menu') %>
       <!--Expert Help Form -->
       <section x-data="$store.expertHelpStore">
-        <div class="flex flex-col items-center justify-center my-4 bg-gray-100">
-          <div class="mt-10">
-            <h1 class="m-2 ml-2 block p-4 text-xl md:text-2xl md:font-semibold text-purple-700 ">Complete this form to Meet Our Expert Team</h1>
-          </div>
-          <div class="grid grid-cols-1 pt-4 lg:grid-cols-2 lg:gap-4">
-            <div class="flex flex-col items-start justify-start">
-              <label for="fullname" class="mb-2 ml-2 block md:text-lg md:font-semibold">Full Name</label>
-              <input type="text" id="fullname" name="fullname" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" />
+        <form @submit.prevent="$store.expertHelpStore.submitForm">
+          <div class="flex flex-col items-center justify-center my-4 bg-gray-100">
+            <div class="mt-10">
+              <h1 class="m-2 ml-2 block p-4 text-xl md:text-2xl md:font-semibold text-purple-700 ">Complete this form to Meet Our Expert Team</h1>
             </div>
-            <div class="flex flex-col items-start justify-start">
-              <label for="email" class="mb-2 ml-2 block md:text-lg md:font-semibold">Email</label>
-              <input type="text" id="email" name="email" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" />
-            </div>
-            <div class="flex flex-col items-start justify-start">
-              <label for="mobile" class="mb-2 ml-2 block md:text-lg md:font-semibold">Mobile</label>
-              <input type="text" id="mobile" name="mobile" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" />
-            </div>
-            <div class="flex flex-col items-start justify-start">
-              <label for="profession" class="mb-2 ml-2 block md:text-lg md:font-semibold">Profession</label>
-              <select x-init="loadProfessions" x-model="selectedProfession" id="profession" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
-                <option value="-1">Select Your Profession</option>
-                <template x-for="pro in profession" :key="pro.id">
-                  <option :value="pro.id" x-text="pro.profession"></option>
-                </template>
-                <!-- Add more options as needed -->
-              </select>
-            </div>
-            <div class="flex flex-col items-start justify-start relative" >
-              <label for="country" class="mb-2 ml-2 block md:text-lg md:font-semibold">Country</label>
-              <input type="text" x-model="countrySearch" @click="open = true" id="country" name="country" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" placeholder="Select a country"/>
-              <div class="relative">
-                <ul x-cloak x-show="open" x-init="loadCountries" x-transition @click.outside="open = false" class="absolute left-1 mt-1 border border-gray-200 z-20 bg-white h-96 overflow-auto">
-                  <template x-for="country in searchCountry()">
-                    <li x-text="country.visa_country" class="md:text-lg md:font-semibold px-4 py-3 hover:bg-gray-100 w-full cursor-pointer md:w-72 w-40" @click="countrySearch = country.visa_country; open = false; selectedCountry = country.id"></li>
+            <div class="grid grid-cols-1 pt-4 lg:grid-cols-2 lg:gap-4">
+              <div class="flex flex-col items-start justify-start">
+                <label for="fullname" class="mb-2 ml-2 block md:text-lg md:font-semibold">Full Name</label>
+                <meta name="csrf-token" content="<%= csrfToken %>">
+                <input type="text" id="fullname" name="fullname" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+              </div>
+              <div class="flex flex-col items-start justify-start">
+                <label for="email" class="mb-2 ml-2 block md:text-lg md:font-semibold">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+              </div>
+              <div class="flex flex-col items-start justify-start">
+                <label for="mobile" class="mb-2 ml-2 block md:text-lg md:font-semibold">Mobile</label>
+                <input type="number" id="mobile" name="mobile" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" required/>
+              </div>
+              <div class="flex flex-col items-start justify-start">
+                <label for="profession" class="mb-2 ml-2 block md:text-lg md:font-semibold">Profession</label>
+                <select x-init="loadProfessions" x-model="selectedProfession" id="profession" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
+                  <option value="-1">Select Your Profession</option>
+                  <template x-for="pro in profession" :key="pro.id">
+                    <option :value="pro.id" x-text="pro.profession"></option>
                   </template>
-                </ul>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="flex flex-col items-start justify-start relative" >
+                <label for="country" class="mb-2 ml-2 block md:text-lg md:font-semibold">Country</label>
+                <input type="text" x-model="countrySearch" @click="open = true" id="country" name="country" class="mt-1 rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg" placeholder="E.g. Thailand"required/>
+                <div class="relative">
+                  <ul x-cloak x-show="open" x-init="loadCountries" x-transition @click.outside="open = false" class="absolute left-1 mt-1 border border-gray-200 z-20 bg-white h-96 overflow-auto">
+                    <template x-for="country in searchCountry()">
+                      <li x-text="country.visa_country" class="md:text-lg md:font-semibold px-4 py-3 hover:bg-gray-100 w-full cursor-pointer md:w-72 w-40" @click="countrySearch = country.visa_country; open = false; selectedCountry = country.id"></li>
+                    </template>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex flex-col items-start justify-start">
+                <label for="vcategory" class="mb-2 ml-2 block md:text-lg md:font-semibold">Visa Category</label>
+                <select id="vcategory" name="vcategory" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
+                  <option value="Tourist Visa" class="font-medium md:text-lg">Tourist Visa</option>
+                  <option value="Business Visa" class="font-medium md:text-lg">Business Visa</option>
+                  <option value="Medical Visa" class="font-medium md:text-lg">Medical Visa</option>
+                  <option value="Student Visa" class="font-medium md:text-lg">Student Visa</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              
+              <div class="flex flex-col items-start justify-start lg:col-span-2">
+                <label for="helptype" class="mb-2 ml-2 block md:text-lg md:font-semibold">Help Type</label>
+                <select id="helptype" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
+                  <option value="Visa Assistance">Visa Assistance</option>
+                  <option value="Paper Processing">Paper Processing</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="flex flex-col items-start justify-start lg:col-span-2">
+                <label for="comment" class="mb-2 ml-2 block md:text-lg md:font-semibold">Comment</label>
+                <textarea id="comment" name="comment" cols="22" class="mt-1 resize rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg"></textarea>
+              </div>
+              <div class="flex flex-col items-start justify-start lg:col-span-2 mb-10">
+                <div class="w-full rounded-xl mt-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-800 hover:to-purple-400 hover:border-2 hover:shadow-lg hover:border-white md:mt-8">
+                      <button class="w-full px-2 py-3 md:text-lg md:font-semibold text-white" id="submitbtn">Get Started!</button>
+                    </div>
               </div>
             </div>
-            <div class="flex flex-col items-start justify-start">
-              <label for="vcategory" class="mb-2 ml-2 block md:text-lg md:font-semibold">Visa Category</label>
-              <select id="vcategory" name="vcategory" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
-                <option value="Tourist Visa" class="font-medium md:text-lg">Tourist Visa</option>
-                <option value="Business Visa" class="font-medium md:text-lg">Business Visa</option>
-                <option value="Medical Visa" class="font-medium md:text-lg">Medical Visa</option>
-                <option value="Student Visa" class="font-medium md:text-lg">Student Visa</option>
-                <!-- Add more options as needed -->
-              </select>
-            </div>
             
-            <div class="flex flex-col items-start justify-start lg:col-span-2">
-              <label for="helptype" class="mb-2 ml-2 block md:text-lg md:font-semibold">Help Type</label>
-              <select id="helptype" name="profession" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg">
-                <option value="Bangladesh">Visa Assistance</option>
-                <option value="India">Paper Processing</option>
-                <!-- Add more options as needed -->
-              </select>
-            </div>
-            <div class="flex flex-col items-start justify-start lg:col-span-2">
-              <label for="comment" class="mb-2 ml-2 block md:text-lg md:font-semibold">Comment</label>
-              <textarea id="comment" name="comment" cols="22" class="mt-1 resize rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 focus:border-blue-500 focus:outline-none md:text-lg"></textarea>
-            </div>
-            <div class="flex flex-col items-start justify-start lg:col-span-2 mb-10">
-              <div class="w-full rounded-xl mt-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-800 hover:to-purple-400 hover:border-2 hover:shadow-lg hover:border-white md:mt-8">
-                    <button class="w-full px-2 py-3 md:text-lg md:font-semibold text-white" id="submitbtn" @click="$store.expertHelpStore.submitForm()">Get Started!</button>
-                  </div>
-            </div>
           </div>
-          
-        </div>
+        </form>
       </section>
       <!--Expert Help Form End -->
       

@@ -14,6 +14,7 @@ document.addEventListener("alpine:init", () => {
     selectedCountry: "-1",
     selectedVisaCategory: "-1",
     selectedProfession: "-1",
+    selectedHelpType: "-1",
 
     help_type: [],
     visaCategory: [],
@@ -66,20 +67,46 @@ document.addEventListener("alpine:init", () => {
     },
 
     submitForm() {
-      console.log("clicked", this.selectedCountry);
-      Toastify({
-        text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
-        duration: 9000,
-        destination: "https://stts3g-8080.csb.app/",
-        newWindow: false,
-        close: false,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        className:
-          "font-[Onest] flex items-center justify-center text-lg flex-wrap bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl py-2 px-4 w-96 capitalize",
-        duration: -1,
-      }).showToast();
+      console.log("clicked", this);
+      const _csrf = document.querySelector('meta[name="csrf-token"]').content;
+      console.log(_csrf);
+
+      this.loading = true;
+      fetch("/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": _csrf,
+        },
+        body: JSON.stringify({
+          fullname: this.fullname,
+          mobile: this.mobile,
+          email: this.email,
+          country: this.selectedCountry,
+          profession: this.selectedProfession,
+          comment: this.comment,
+          visatype: this.selectedVisaCategory,
+          helptype: this.selectedHelpType,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.loading = false;
+          Toastify({
+            text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
+            duration: 9000,
+            destination: "https://stts3g-8080.csb.app/",
+            newWindow: false,
+            close: false,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className:
+              "font-[Onest] flex items-center justify-center text-lg flex-wrap bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl py-2 px-4 w-96 capitalize",
+            duration: -1,
+          }).showToast();
+        });
     },
 
     toast(message) {

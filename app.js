@@ -6,6 +6,10 @@ const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const csrf = require("csurf");
+
+const csrfProtect = csrf({ cookie: true });
+const formParser = bodyParser.urlencoded({ extended: false });
 
 require("dotenv").config();
 //const fetch = require('node-fetch')
@@ -57,12 +61,13 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/expert", (req, res) => {
+app.get("/expert", csrfProtect, (req, res) => {
   //let tracking = req.query.tracking;
-  res.render("expert");
+  console.log("Token to Browser/form: " + req.csrfToken());
+  res.render("expert", { csrfToken: req.csrfToken() });
 });
 
-app.use("/api/", apiRoutes);
+app.use("/api/", formParser, csrfProtect, apiRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
