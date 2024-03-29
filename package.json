@@ -29,5 +29,7 @@
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "csurf": "^1.11.0"
+  }
 }

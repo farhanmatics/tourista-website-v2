@@ -66,7 +66,7 @@ document.addEventListener("alpine:init", () => {
     },
 
     submitForm() {
-      console.log("clicked", this.selectedCountry);
+      console.log("clicked", this);
       Toastify({
         text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
         duration: 9000,
