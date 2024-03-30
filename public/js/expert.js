@@ -6,6 +6,13 @@ document.addEventListener("alpine:init", () => {
   Alpine.store("expertHelpStore", {
     countries: [],
     countrySearch: "",
+    visaCategory: [
+      "Tourist Visa",
+      "Medical Visa",
+      "Business Visa",
+      "Student Visa",
+    ],
+    selectedVisaCategory: "Tourist Visa",
 
     open: false,
     fullname: "",
