@@ -1,5 +1,6 @@
 require("dotenv").config();
 const sequelize2 = require("../config/db");
+const nodemailer = require("nodemailer");
 
 module.exports.countries_get = async (req, res) => {
   console.log("here");
@@ -76,7 +77,63 @@ module.exports.submit_form_post = async (req, res) => {
       type: QueryTypes.INSERT,
     });
 
-    console.log(metadata);
+    //console.log(metadata);
+
+    //send an email to customer
+    const transporter = nodemailer.createTransport({
+      host: "mail.tourista.co",
+      port: 465,
+      secure: true, // Use `true` for port 465, `false` for all other ports
+      auth: {
+        user: "no-reply@tourista.co",
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const info = await transporter.sendMail({
+      from: '"Tasnuva from Tourista" <no-reply@tourista.co>', // sender address
+      to: email, // list of receivers
+      subject: "Tourista! Your request is being processed", // Subject line
+      text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.", // plain text body
+      html: `<html>
+      <head>
+        <title></title>
+        <link href="https://svc.webspellchecker.net/spellcheck31/lf/scayt3/ckscayt/css/wsc.css" rel="stylesheet" type="text/css" />
+      </head>
+      <body><img alt="welcome to tourista" src="https://tourista.co/img/tl-01.png" style="height:47px; width:200px" /><br />
+      <br />
+      <br />
+      <br />
+      Hi ${fullname},<br />
+      &nbsp;
+      <div>Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.<br />
+      <br />
+      Feel Free to knock us for any query.<br />
+      <br />
+      Tasnuva Sharmin,<br />
+      Business Executive,<br />
+      Tourista Ltd.<br />
+      67/C, Block E, Road 11, Level 04, Banani, Dhaka 1213, Bangladesh.<br />
+      https://tourista.co<br />
+      +880 1711-925054<br />
+      <br />
+      &nbsp;</div>
+      </body>
+      </html>
+      `, // html body
+    });
+
+    console.log("Message sent: %s", info.messageId);
+
+    const infoTourista = await transporter.sendMail({
+      from: '"Tasnuva from Tourista" <no-reply@tourista.co>', // sender address
+      to: "farhan@tourista.co, junayed@tourista.co, visa@tourista.co", // list of receivers
+      subject: `Need Expert Help!!! ${fullname}`, // Subject line
+      text: `${fullname} needs expert help! check your admin panel quickly`, // plain text body
+      html: `<p>${fullname} needs expert help! check your admin panel quickly</p>`, // html body
+    });
+
+    console.log("Message sent: %s", infoTourista.messageId);
 
     res.json({
       success: true,

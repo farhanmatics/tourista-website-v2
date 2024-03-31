@@ -30,6 +30,7 @@
     "sequelize": "^6.37.1"
   },
   "dependencies": {
-    "csurf": "^1.11.0"
+    "csurf": "^1.11.0",
+    "nodemailer": "^6.9.13"
   }
 }
