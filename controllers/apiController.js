@@ -91,7 +91,7 @@ module.exports.submit_form_post = async (req, res) => {
     });
 
     const info = await transporter.sendMail({
-      from: '"Tasnuva from Tourista" <no-reply@tourista.co>', // sender address
+      from: '"Tourista " <no-reply@tourista.co>', // sender address
       to: email, // list of receivers
       subject: "Tourista! Your request is being processed", // Subject line
       text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.", // plain text body
@@ -126,7 +126,7 @@ module.exports.submit_form_post = async (req, res) => {
     console.log("Message sent: %s", info.messageId);
 
     const infoTourista = await transporter.sendMail({
-      from: '"Tasnuva from Tourista" <no-reply@tourista.co>', // sender address
+      from: '"Tourista" <no-reply@tourista.co>', // sender address
       to: "farhan@tourista.co, junayed@tourista.co, visa@tourista.co", // list of receivers
       subject: `Need Expert Help!!! ${fullname}`, // Subject line
       text: `${fullname} needs expert help! check your admin panel quickly`, // plain text body
