@@ -18,13 +18,11 @@ document.addEventListener("alpine:init", () => {
     fullname: "",
     email: "",
     mobile: "",
-    selectedCountry: "-1",
-    selectedVisaCategory: "-1",
+    selectedCountry: "221",
     selectedProfession: "-1",
-    selectedHelpType: "-1",
+    selectedHelpType: "Visa Assistance",
 
-    help_type: [],
-    visaCategory: [],
+    help_type: ["Visa Assistance", "Paper Processing"],
     profession: [],
     comment: "",
 
@@ -98,45 +96,34 @@ document.addEventListener("alpine:init", () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          console.log("Status:", data.success);
+          if (!data.success) {
+            this.errtoast(data.message);
+          } else {
+            this.toast(
+              "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
+            );
+          }
           this.fullname = "";
           this.mobile = "";
           this.email = "";
           this.comment = "";
           this.loading = false;
-          Toastify({
-            text: "Your request is being processed. Thank You For Submitting your request. An expert will reach out to you shortly. Meanwhile you can visit our website to get more details.",
-            duration: 9000,
-            destination: "https://stts3g-8080.csb.app/",
-            newWindow: false,
-            close: false,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            className:
-              "font-[Onest] flex items-center justify-center text-lg flex-wrap bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl py-2 px-4 w-96 capitalize",
-            duration: -1,
-          }).showToast();
         });
     },
 
     toast(message) {
       Toastify({
         text: message,
-        duration: 7000,
-        newWindow: true,
+        duration: 9000,
+        destination: "https://stts3g-8080.csb.app/",
+        newWindow: false,
         close: true,
-        gravity: "bottom", // `top` or `bottom`
+        gravity: "top", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background:
-            "linear-gradient(to left bottom, #7039aa, #563395, #3f2b80, #29236a, #151b54)",
-          borderRadius: "10px",
-          textShadow: "1px 1px 1px #000",
-          padding: "10px 25px",
-        },
-        onClick: function () {}, // Callback after click
+        className:
+          "font-[Onest] flex items-center justify-center text-lg flex-wrap bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl py-2 px-4 w-96 capitalize",
       }).showToast();
     },
 
@@ -146,7 +133,7 @@ document.addEventListener("alpine:init", () => {
         duration: 7000,
         newWindow: true,
         close: true,
-        gravity: "bottom",
+        gravity: "top",
         position: "right",
         stopOnFocus: true,
         style: {

@@ -59,7 +59,7 @@ module.exports.submit_form_post = async (req, res) => {
   } else {
     console.log("inserting");
     let insertQry = `INSERT INTO touristadev_db.expert_orders
-    (order_type, country_id, fullname, email, mobile, profession, help_type, comment, created_at, visa_category_id, status) 
+    (order_type, country_id, fullname, email, mobile, profession, help_type, comment, created_at, visa_category, status) 
     VALUES('visa', ?, ?, ?, ?, ?, ?, ?, current_timestamp(3), ?, 'Submitted')`;
 
     const [insertResult, metadata] = await sequelize2.query(insertQry, {
