@@ -100,7 +100,7 @@ module.exports.submit_form_post = async (req, res) => {
         <title></title>
         <link href="https://svc.webspellchecker.net/spellcheck31/lf/scayt3/ckscayt/css/wsc.css" rel="stylesheet" type="text/css" />
       </head>
-      <body><img alt="welcome to tourista" src="https://tourista.co/img/tl-01.png" style="height:47px; width:200px" /><br />
+      <body><img alt="welcome to tourista" src="https://i.ibb.co/zZgndRh/Tl-011111.png" style="height:47px; width:200px" /><br />
       <br />
       <br />
       <br />
@@ -130,7 +130,32 @@ module.exports.submit_form_post = async (req, res) => {
       to: "farhan@tourista.co, junayed@tourista.co, visa@tourista.co", // list of receivers
       subject: `Need Expert Help!!! ${fullname}`, // Subject line
       text: `${fullname} needs expert help! check your admin panel quickly`, // plain text body
-      html: `<p>${fullname} needs expert help! check your admin panel quickly</p>`, // html body
+      html: `<html>
+      <head>
+        <title></title>
+        <link href="https://svc.webspellchecker.net/spellcheck31/lf/scayt3/ckscayt/css/wsc.css" rel="stylesheet" type="text/css" />
+      </head>
+      <body><img alt="welcome to tourista" src="https://i.ibb.co/zZgndRh/Tl-011111.png" style="height:47px; width:200px" /><br />
+      <br />
+      <br />
+      <br />
+      Hi Tourista,<br />
+      &nbsp;
+      <div>${fullname} needs expert help, check your admin quickly for more details.<br />
+      <br />
+      Feel Free to knock us for any query.<br />
+      <br />
+      Tasnuva Sharmin,<br />
+      Business Executive,<br />
+      Tourista Ltd.<br />
+      67/C, Block E, Road 11, Level 04, Banani, Dhaka 1213, Bangladesh.<br />
+      https://tourista.co<br />
+      +880 1711-925054<br />
+      <br />
+      &nbsp;</div>
+      </body>
+      </html>
+      `, // html body
     });
 
     console.log("Message sent: %s", infoTourista.messageId);
