@@ -57,12 +57,14 @@ app.use((req, res, next) => {
 //app.get("*", checkUser);
 
 app.get("/", (req, res) => {
-  //let tracking = req.query.tracking;
   res.render("home");
 });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+
 app.get("/expert", csrfProtect, (req, res) => {
-  //let tracking = req.query.tracking;
   console.log("Token to Browser/form: " + req.csrfToken());
   res.render("expert", { csrfToken: req.csrfToken() });
 });
