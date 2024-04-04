@@ -223,7 +223,7 @@
         </div>
         <div class="md:py-30 mt-2 grid grid-cols-1 gap-2 px-10 md:grid-cols-3">
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/photo-1580674684081-7617fbf3d745-1707533487494.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
               <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
@@ -231,44 +231,44 @@
             <h1 class="font-semibold">3 Days Delivery</h1>
           </div>
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/photo-1552465011-b4e21bf6e79a-1707533540792.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
-              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
+              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">THAILAND</h1>
             </div>
-            <h1 class="font-semibold">3 Days Delivery</h1>
+            <h1 class="font-semibold">5-7 Days Delivery</h1>
           </div>
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/photo-1577931683033-1059552104e0-1707533656115.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
-              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
+              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">MALAYSIA</h1>
             </div>
-            <h1 class="font-semibold">3 Days Delivery</h1>
+            <h1 class="font-semibold">5 Days Delivery</h1>
           </div>
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/paul-szewczyk-gt3gK_Wob2g-unsplash.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
-              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
+              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">CAMBODIA</h1>
             </div>
-            <h1 class="font-semibold">3 Days Delivery</h1>
+            <h1 class="font-semibold">5 Days Delivery</h1>
           </div>
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/stefano-alemani-f9KQYJR7fXk-unsplash.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
-              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
+              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">SRILANKA</h1>
             </div>
-            <h1 class="font-semibold">3 Days Delivery</h1>
+            <h1 class="font-semibold">5-7 Days Delivery</h1>
           </div>
           <div class="flex flex-col p-4">
-            <img src="/public/images/photo-1559717201-fbb671ff56b7.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
+            <img src="/public/images/jisun-han-cjSsSQ7Yedk-unsplash.webp" alt="Tourista, visa made easy" class="rounded-xl shadow-sm" />
             <div class="flex items-center justify-between py-2">
               <h1 class="font-bold text-white bg-purple-900 py-2 px-4 rounded-xl">Asia</h1>
-              <h1 class="font-bold text-3xl text-purple-900 shadow-sm pr-2">DUBAI</h1>
+              <h1 class="font-bold text-3xl text-purple-900 pr-2">SINGAPORE</h1>
             </div>
-            <h1 class="font-semibold">3 Days Delivery</h1>
+            <h1 class="font-semibold">7 Days Delivery</h1>
           </div>
         </div>
       </section>
@@ -343,22 +343,24 @@
             <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Recent Updates</h1>
           </div>
           <div class="grid grid-cols-1 gap-3 md:px-20 px-4 py-10 md:grid-cols-2">
-            <div class="flex flex-col md:flex-row items-end p-10">
+            
+            <!-- Dynamic Blog Start -->
+            <% if (blogs.length > 0) { %>
+            <% blogs.forEach(function(post) { %>
+              <div class="flex flex-col md:flex-row items-end p-10">
+                <img src="<%= post.thumbnail_image %>" alt="<%= post.thumbnail_image_alt %>" class="md:w-1/2 rounded-2xl" />
+                <h1 class="px-4 py-4 text-lg underline"><%= post.title %></h1>
+              </div>
+            <% }); %>
+            <% } %>
+
+            <!-- Dynamic Blog End -->
+            
+            <!-- <div class="flex flex-col md:flex-row items-end p-10">
               <img src="/public/images/photo-1551190822-a9333d879b1f.webp" alt="Tourista, medical package" class="md:w-1/2 rounded-2xl" />
               <h1 class="px-4 py-4 text-lg underline">Affordable Medical Packages available now on Tourista...</h1>
-            </div>
-            <div class="flex flex-col md:flex-row items-end p-10">
-              <img src="/public/images/photo-1551190822-a9333d879b1f.webp" alt="Tourista, medical package" class="md:w-1/2 rounded-2xl" />
-              <h1 class="px-4 py-4 text-lg underline">Affordable Medical Packages available now on Tourista...</h1>
-            </div>
-            <div class="flex flex-col md:flex-row items-end p-10">
-              <img src="/public/images/photo-1551190822-a9333d879b1f.webp" alt="Tourista, medical package" class="md:w-1/2 rounded-2xl" />
-              <h1 class="px-4 py-4 text-lg underline">Affordable Medical Packages available now on Tourista...</h1>
-            </div>
-            <div class="flex flex-col md:flex-row items-end p-10">
-              <img src="/public/images/photo-1551190822-a9333d879b1f.webp" alt="Tourista, medical package" class="md:w-1/2 rounded-2xl" />
-              <h1 class="px-4 py-4 text-lg underline">Affordable Medical Packages available now on Tourista...</h1>
-            </div>
+            </div> -->
+           
           </div>
           <div class="flex justify-end">
             <h1 class="text-sm underline font-semibold p-10">Read More..</h1>
