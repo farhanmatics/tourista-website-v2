@@ -347,9 +347,9 @@
             <!-- Dynamic Blog Start -->
             <% if (blogs.length > 0) { %>
             <% blogs.forEach(function(post) { %>
-              <div class="flex flex-col md:flex-row items-end p-10">
-                <img src="<%= post.thumbnail_image %>" alt="<%= post.thumbnail_image_alt %>" class="md:w-1/2 rounded-2xl" />
-                <h1 class="px-4 py-4 text-lg underline"><%= post.title %></h1>
+              <div class="flex flex-col md:flex-row md:items-end items-start md:p-10 p-4">
+                <img src="<%= post.thumbnail_image %>" alt="<%= post.thumbnail_image_alt %>" class=" rounded-2xl md:h-40 md:w-1/2 w-full" />
+                <h1 class="px-4 py-4 text-lg underline"><a href="/blog/<%= post.id %>"><%= post.title %></a></h1>
               </div>
             <% }); %>
             <% } %>
