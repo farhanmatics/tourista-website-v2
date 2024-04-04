@@ -8,6 +8,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const csrf = require("csurf");
 
+const homeController = require("./controllers/homeController");
+
 const csrfProtect = csrf({ cookie: true });
 const formParser = bodyParser.urlencoded({ extended: false });
 
@@ -56,9 +58,7 @@ app.use((req, res, next) => {
 
 //app.get("*", checkUser);
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
+app.get("/", homeController.home_get);
 
 app.get("/about", (req, res) => {
   res.render("about");
