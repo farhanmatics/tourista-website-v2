@@ -16,9 +16,6 @@ const formParser = bodyParser.urlencoded({ extended: false });
 require("dotenv").config();
 //const fetch = require('node-fetch')
 
-const apiRoutes = require("./routes/apiRoutes");
-//const visaRoutes = require('./routes/visaRoutes')
-//const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -59,7 +56,7 @@ app.use((req, res, next) => {
 //app.get("*", checkUser);
 
 app.get("/", homeController.home_get);
-app.get("/blog/:id", homeController.blogs_get);
+//app.get("/blog/:id", homeController.blogs_get);
 
 app.get("/about", (req, res) => {
   res.render("about");
@@ -70,7 +67,7 @@ app.get("/expert", csrfProtect, (req, res) => {
   res.render("expert", { csrfToken: req.csrfToken() });
 });
 
-app.use("/api/", formParser, csrfProtect, apiRoutes);
+//app.use("/api/", formParser, csrfProtect, apiRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");

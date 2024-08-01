@@ -2,7 +2,7 @@
   console.log("welcome to tourista expert help");
 
   async function getCsrfToken() {
-    const response = await fetch('http://localhost:8888/.netlify/functions/api/csrf-token', {
+    const response = await fetch('https://tourista-monitor.netlify.app/.netlify/functions/api/csrf-token', {
       credentials: 'include' // Include credentials to receive CSRF token cookie
     });
     const data = await response.json();
@@ -87,7 +87,7 @@ document.addEventListener("alpine:init", () => {
       console.log(_csrf);
 
       this.loading = true;
-      fetch("http://localhost:8888/.netlify/functions/api/submit-form", {
+      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/submit-form", {
         method: "POST",
         credentials: 'include', // Include credentials to send CSRF token cookie
         headers: {
