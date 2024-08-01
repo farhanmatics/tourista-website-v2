@@ -1,5 +1,15 @@
 (() => {
   console.log("welcome to tourista expert help");
+
+  async function getCsrfToken() {
+    const response = await fetch('http://localhost:8888/.netlify/functions/api/csrf-token', {
+      credentials: 'include' // Include credentials to receive CSRF token cookie
+    });
+    const data = await response.json();
+    document.getElementById('csrfToken').value = data.csrfToken;
+  }
+
+  getCsrfToken();
 })();
 
 document.addEventListener("alpine:init", () => {
@@ -47,7 +57,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("/api/countries", requestOptions)
+      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/countries", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -62,7 +72,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("/api/professions", requestOptions)
+      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/professions", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -73,15 +83,16 @@ document.addEventListener("alpine:init", () => {
 
     submitForm() {
       console.log("clicked", this);
-      const _csrf = document.querySelector('meta[name="csrf-token"]').content;
+      const _csrf = document.getElementById('csrfToken').value;
       console.log(_csrf);
 
       this.loading = true;
-      fetch("/api/submit-form", {
+      fetch("http://localhost:8888/.netlify/functions/api/submit-form", {
         method: "POST",
+        credentials: 'include', // Include credentials to send CSRF token cookie
         headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-TOKEN": _csrf,
+          'Content-Type': 'application/json',
+          'csrf-token': _csrf,
         },
         body: JSON.stringify({
           fullname: this.fullname,
@@ -116,7 +127,7 @@ document.addEventListener("alpine:init", () => {
       Toastify({
         text: message,
         duration: 9000,
-        destination: "https://stts3g-8080.csb.app/",
+        //destination: "https://stts3g-8080.csb.app/",
         newWindow: false,
         close: true,
         gravity: "top", // `top` or `bottom`
