@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   console.log("welcome to tourista expert help");
 
   async function getCsrfToken() {
@@ -9,7 +9,7 @@
     document.getElementById('csrfToken').value = data.csrfToken;
   }
 
-  getCsrfToken();
+  await getCsrfToken();
 })();
 
 document.addEventListener("alpine:init", () => {
@@ -57,7 +57,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/countries", requestOptions)
+      fetch("http://localhost:8888/.netlify/functions/api/countries", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -72,7 +72,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/professions", requestOptions)
+      fetch("http://localhost:8888/.netlify/functions/api/professions", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -92,7 +92,7 @@ document.addEventListener("alpine:init", () => {
         credentials: 'include', // Include credentials to send CSRF token cookie
         headers: {
           'Content-Type': 'application/json',
-          'csrf-token': _csrf,
+          'x-csrf-token': _csrf,
         },
         body: JSON.stringify({
           fullname: this.fullname,
