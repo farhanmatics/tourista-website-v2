@@ -1,15 +1,15 @@
-(() => {
+(async () => {
   console.log("welcome to tourista expert help");
 
   async function getCsrfToken() {
-    const response = await fetch('https://tourista-monitor.netlify.app/.netlify/functions/api/csrf-token', {
+    const response = await fetch('http://localhost:8888/.netlify/functions/api/csrf-token', {
       credentials: 'include' // Include credentials to receive CSRF token cookie
     });
     const data = await response.json();
     document.getElementById('csrfToken').value = data.csrfToken;
   }
 
-  getCsrfToken();
+  await getCsrfToken();
 })();
 
 document.addEventListener("alpine:init", () => {
@@ -57,7 +57,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/countries", requestOptions)
+      fetch("http://localhost:8888/.netlify/functions/api/countries", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -72,7 +72,7 @@ document.addEventListener("alpine:init", () => {
         redirect: "follow",
       };
 
-      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/professions", requestOptions)
+      fetch("http://localhost:8888/.netlify/functions/api/professions", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -87,12 +87,12 @@ document.addEventListener("alpine:init", () => {
       console.log(_csrf);
 
       this.loading = true;
-      fetch("https://tourista-monitor.netlify.app/.netlify/functions/api/submit-form", {
+      fetch("http://localhost:8888/.netlify/functions/api/submit-form", {
         method: "POST",
         credentials: 'include', // Include credentials to send CSRF token cookie
         headers: {
           'Content-Type': 'application/json',
-          'csrf-token': _csrf,
+          'x-csrf-token': _csrf,
         },
         body: JSON.stringify({
           fullname: this.fullname,
