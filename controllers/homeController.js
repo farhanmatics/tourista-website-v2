@@ -18,15 +18,13 @@ module.exports.home_get = async (req, res) => {
 
 module.exports.blogs_get = async (req, res) => {
   const id = req.params.id;
-  const blog = await sequelize2.query(
-    "select title,meta_title,meta_description,meta_keywords,header_image,header_image_alt,thumbnail_image,post,created_at,updated_at,created_by,updated_by,thumbnail_image_alt,tags  from blog_posts bp where id = " +
-      id,
-    {
-      type: sequelize2.QueryTypes.SELECT,
-    },
-  );
+  console.log("Blog ID:", id);
 
-  console.log(blog);
+  // TODO: Fetch blog data using the id
+  // For now, we'll pass a dummy blog object
+  const blog = {
+    id: id
+  };
 
   res.render("blog", { blog: blog });
 };

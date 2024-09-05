@@ -1,0 +1,47 @@
+<%- include('partials/Header') %>
+
+<main class="font-[Onest]" x-data="{ 
+  blogId: '<%= blog.id %>', // This is the ID passed from res.render
+  init() {
+    $store.blogStore.fetchBlogDetails(this.blogId);
+  }
+}" x-init="init">
+  <%- include('partials/menu') %>
+  
+  <div class="container mx-auto px-4 py-8">
+    <div x-show="$store.blogStore.loading" class="text-center py-8">
+      <p class="text-xl">Loading blog content...</p>
+    </div>
+    
+    <div x-show="$store.blogStore.error" x-text="$store.blogStore.error" class="text-center py-8 text-red-600"></div>
+    
+    <template x-if="$store.blogStore.getBlogDetails()">
+      <div>
+        <h1 x-text="$store.blogStore.getBlogDetails().title" class="text-3xl md:text-4xl font-bold mb-6"></h1>
+        
+        <div class="mb-8">
+          <img :src="$store.blogStore.getBlogDetails().header_image" 
+               :alt="$store.blogStore.getBlogDetails().header_image_alt" 
+               class="w-auto h-full md:h-64 object-cover rounded-lg">
+        </div>
+        
+        <div x-html="$store.blogStore.getBlogDetails().post" class="prose max-w-none"></div>
+        
+        <div class="mt-6 text-sm text-gray-600">
+          <p>Created: <span x-text="new Date($store.blogStore.getBlogDetails().created_at).toLocaleDateString()"></span></p>
+          <p>Updated: <span x-text="new Date($store.blogStore.getBlogDetails().updated_at).toLocaleDateString()"></span></p>
+        </div>
+      </div>
+    </template>
+    
+    <div x-show="!$store.blogStore.loading && !$store.blogStore.getBlogDetails()" class="text-center py-8">
+      <p class="text-xl text-red-600">Error: Blog post not found</p>
+    </div>
+  </div>
+
+  <%- include('partials/Bottom') %>
+</main>
+
+<script src="/public/js/blog.js"></script>
+<%- include('partials/Footer') %>
+

@@ -11,3 +11,5 @@ window.setInterval(function () {
   currentIndex = newIndex;
   document.getElementById("animtext").textContent = hello[currentIndex];
 }, 2300);
+
+

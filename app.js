@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 //app.get("*", checkUser);
 
 app.get("/", homeController.home_get);
-//app.get("/blog/:id", homeController.blogs_get);
+app.get("/blog/:id", homeController.blogs_get);
 
 app.get("/about", (req, res) => {
   res.render("about");

@@ -1,0 +1,40 @@
+<!-- Blogs Start -->
+<section>
+  <div class="md:py-30 flex justify-start px-10 mt-40 mb-10">
+    <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#8A52BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip -mt-4" opacity="0.16">
+      <circle cx="12" cy="5" r="1" />
+      <circle cx="19" cy="5" r="1" />
+      <circle cx="5" cy="5" r="1" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="19" cy="12" r="1" />
+      <circle cx="5" cy="12" r="1" />
+      <circle cx="12" cy="19" r="1" />
+      <circle cx="19" cy="19" r="1" />
+      <circle cx="5" cy="19" r="1" />
+    </svg>
+    <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Blogs</h1>
+  </div>
+  
+  <div x-data="{ 
+    init() { 
+      $store.blogStore.fetchBlogs();
+    } 
+  }" x-init="init" class="px-10 md:px-20">
+    <div x-show="$store.blogStore.loading">Loading...</div>
+    <div x-show="$store.blogStore.error" x-text="$store.blogStore.error"></div>
+    <div x-show="!$store.blogStore.loading && !$store.blogStore.error" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <template x-for="blog in $store.blogStore.getBlogs()" :key="blog.id">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden flex">
+          <div class="w-1/3">
+            <img :src="blog.thumbnail_image" :alt="blog.thumbnail_image_alt" class="w-full h-full object-cover">
+          </div>
+          <div class="w-2/3 p-6 flex flex-col justify-between">
+            <h2 x-text="blog.title" class="text-xl font-semibold mb-2 text-gray-800"></h2>
+            <a :href="'/blog/' + blog.id" class="text-purple-600 hover:text-purple-800 font-medium self-end mt-4">Read More</a>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+<!-- Blogs End -->
