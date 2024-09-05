@@ -9,7 +9,7 @@ document.addEventListener('alpine:init', () => {
       this.error = null;
       this.blogDetails = null;
       try {
-        const response = await fetch(`http://localhost:8888/.netlify/functions/api/blog/${id}`);
+        const response = await fetch(`https://tourista-monitor.netlify.app/.netlify/functions/api/blog/${id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

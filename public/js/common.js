@@ -8,7 +8,7 @@ document.addEventListener('alpine:init', () => {
       this.loading = true;
       this.error = null;
       try {
-        const response = await fetch('http://localhost:8888/.netlify/functions/api/blogs'); // Replace with your actual API endpoint
+        const response = await fetch('https://tourista-monitor.netlify.app/.netlify/functions/api/blogs'); // Replace with your actual API endpoint
         const data = await response.json();
         this.blogs = data;
       } catch (error) {
