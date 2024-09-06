@@ -1,0 +1,144 @@
+{
+	"data": [
+		{
+			"statement": {
+				"en": "Passport Copy",
+				"bn": "পাসপোর্ট কপি"
+			},
+			"type": {
+				"en": "The applicant must provide a Bangladeshi original passport issued within 10 years. The passport must be valid for six months. The passport validity should follow the planned date of departure from the designated country. Handwriting and alterations are not permitted.",
+				"bn": "আবেদনকারীকে ১০ বছরের মধ্যে ইস্যুকৃত একটি বাংলাদেশী মূল পাসপোর্ট জমা দিতে হবে। পাসপোর্টটি ছয় মাসের জন্য বৈধ হতে হবে। পাসপোর্টের মেয়াদ নির্ধারিত দেশের প্রস্থানের পরিকল্পিত তারিখ অনুসরণ করতে হবে। হাতে লেখা বা পরিবর্তিত পাসপোর্ট গ্রহণযোগ্য নয়।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Photograph",
+				"bn": "ছবি"
+			},
+			"type": {
+				"en": "Applicants must provide a current passport-size photograph. It must be the same size as per embassy instruction photo. The photo can't be older than six months.",
+				"bn": "আবেদনকারীদের একটি বর্তমান পাসপোর্ট সাইজের ছবি জমা দিতে হবে। ছবির আকার দূতাবাসের নির্দেশিকা অনুযায়ী হতে হবে। ছবিটি ছয় মাসের বেশি পুরানো হতে পারবে না।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Cover Letter",
+				"bn": "কভার লেটার"
+			},
+			"type": {
+				"en": "The applicants must provide a personalized letter of application. The applicant must give personal details. For example, name, designation, passport number, and purpose of trip. The letter should be addressed to the Visa Officer of the Embassy. The visa category must be in the subject line.",
+				"bn": "আবেদনকারীকে একটি ব্যক্তিগত আবেদন পত্র জমা দিতে হবে। পত্রে ব্যক্তিগত বিবরণ দিতে হবে, যেমন নাম, পদবী, পাসপোর্ট নম্বর এবং ভ্রমণের উদ্দেশ্য। পত্রটি দূতাবাসের ভিসা অফিসারের প্রতি সম্বোধিত হতে হবে এবং ভিসার শ্রেণী বিষয়শিরোনামে উল্লেখ করতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Forwarding Letter/NOC",
+				"bn": "ফরোয়ার্ডিং লেটার/এনওসি"
+			},
+			"type": {
+				"en": "A forwarding letter is an NOC or a LOI or any other letter from the Bangladeshi authority. The letter is formally written on the letterhead pad of the company. The letter must contain the applicant's name, designation, and passport number. It should also address the length of their visit.",
+				"bn": "একটি ফরোয়ার্ডিং লেটার হল একটি এনওসি বা এলওআই বা যে কোনো সরকারি চিঠি, যা বাংলাদেশী কর্তৃপক্ষ থেকে আসে। পত্রটি কোম্পানির প্যাডে আনুষ্ঠানিকভাবে লেখা হতে হবে এবং আবেদনকারীর নাম, পদবী, পাসপোর্ট নম্বর এবং ভ্রমণের দৈর্ঘ্য উল্লেখ করতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Office ID Card",
+				"bn": "অফিস আইডি কার্ড"
+			},
+			"type": {
+				"en": "Applicants must submit a copy of their office ID card from the employer. The business may be based in Bangladesh or somewhere else.",
+				"bn": "আবেদনকারীদের তাদের কর্মস্থলের আইডি কার্ডের একটি কপি জমা দিতে হবে। ব্যবসাটি বাংলাদেশ বা অন্য কোথাও হতে পারে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Personal Bank Statement for the last 6 months",
+				"bn": "ব্যক্তিগত ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)"
+			},
+			"type": {
+				"en": "Applicants must provide their bank statement for the last six months. A legitimate seal and signature should accompany the declaration to confirm its reliability. The bank statement may come from another bank or one in Bangladesh.",
+				"bn": "আবেদনকারীকে শেষ ছয় মাসের ব্যাংক স্টেটমেন্ট জমা দিতে হবে। নির্ভরযোগ্যতা নিশ্চিত করতে বৈধ সিল ও স্বাক্ষর সহ জমা দিতে হবে। ব্যাংক স্টেটমেন্টটি অন্য কোনো ব্যাংক বা বাংলাদেশের ব্যাংক থেকে হতে পারে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Personal TIN Certificate",
+				"bn": "ব্যক্তিগত টিআইএন সার্টিফিকেট"
+			},
+			"type": {
+				"en": "The applicant needs to submit a TIN certificate.",
+				"bn": "আবেদনকারীকে টিআইএন সার্টিফিকেট জমা দিতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Personal ITR Certificate (Last 3 years)",
+				"bn": "ব্যক্তিগত আইটিআর সার্টিফিকেট (শেষ ৩ বছর)"
+			},
+			"type": {
+				"en": "The applicant needs to submit an ITR copy of the last 3 years. The ITR copy needs to be collected from the Bangladesh National Board of Revenue.",
+				"bn": "আবেদনকারীকে শেষ ৩ বছরের আইটিআর কপি জমা দিতে হবে। আইটিআর কপিটি বাংলাদেশ জাতীয় রাজস্ব বোর্ড থেকে সংগ্রহ করতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Tax documents",
+				"bn": "ট্যাক্স ডকুমেন্টস"
+			},
+			"type": {
+				"en": "Please use a hardware scanner to scan the documents. If you use any scanner app, make sure the documents are cropped properly.",
+				"bn": "দয়া করে হার্ডওয়্যার স্ক্যানার ব্যবহার করে ডকুমেন্টগুলো স্ক্যান করুন। কোনো স্ক্যানার অ্যাপ ব্যবহার করলে ডকুমেন্টগুলো সঠিকভাবে ক্রপ করা হয়েছে কিনা তা নিশ্চিত করুন।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Company Bank Statement",
+				"bn": "কোম্পানির ব্যাংক স্টেটমেন্ট"
+			},
+			"type": {
+				"en": "The applicant needs to submit the company bank statement for the last 6 months. It will only be applicable if the company sponsors the trip.",
+				"bn": "যদি কোনো কোম্পানি ভ্রমণের স্পন্সর হয়, তবে আবেদনকারীকে শেষ ৬ মাসের কোম্পানির ব্যাংক স্টেটমেন্ট জমা দিতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Company ITR",
+				"bn": "কোম্পানির আইটিআর"
+			},
+			"type": {
+				"en": "If any company sponsors the trip, the applicants need to provide the company’s past six months ITR record.",
+				"bn": "যদি কোনো কোম্পানি ভ্রমণ স্পন্সর করে, তবে আবেদনকারীকে কোম্পানির শেষ ৬ মাসের আইটিআর রেকর্ড জমা দিতে হবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Trip itinerary",
+				"bn": "ভ্রমণসূচি"
+			},
+			"type": {
+				"en": "A detailed travel schedule for the applicant's journey from Bangladesh is required to be submitted. It will contain all the travel details.",
+				"bn": "আবেদনকারীর ভ্রমণের একটি বিস্তারিত সূচি জমা দিতে হবে। এতে ভ্রমণের সব বিবরণ থাকবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Airline Ticket Booking",
+				"bn": "বিমান টিকেট বুকিং"
+			},
+			"type": {
+				"en": "The applicant needs to prove that they are flying from Bangladesh. In this case, the documents for purchasing a plane ticket that matches the duration of the trip work.",
+				"bn": "আবেদনকারীকে প্রমাণ করতে হবে যে তারা বাংলাদেশ থেকে বিমানযোগে যাচ্ছেন। এই ক্ষেত্রে, ভ্রমণের সময়ের সাথে মিলে যাওয়া বিমান টিকেটের ক্রয়ের দলিল কাজ করবে।"
+			}
+		},
+		{
+			"statement": {
+				"en": "Hotel Booking",
+				"bn": "হোটেল বুকিং"
+			},
+			"type": {
+				"en": "A reserved hotel booking for the applicant’s accommodation is also needed. The applicant should mention the hotel or resort as per the schedule of the trip.",
+				"bn": "আবেদনকারীর থাকার জন্য একটি সংরক্ষিত হোটেল বুকিংয়ের দলিলও প্রয়োজন। আবেদনকারীকে ভ্রমণের সূচি অনুযায়ী হোটেল বা রিসোর্টের নাম উল্লেখ করতে হবে।"
+			}
+		}
+	]
+}

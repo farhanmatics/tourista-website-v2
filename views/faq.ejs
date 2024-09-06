@@ -1,0 +1,74 @@
+<%- include('partials/Header') %>
+
+    <main class="font-[Onest]">
+      <%- include('partials/menu') %>
+     
+      <!-- About Tourista -->
+      <section>
+        
+          <div class="flex flex-col">
+            <div class="md:py-30 mt-10 flex justify-start px-10 py-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#8A52BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip -mt-4" opacity="0.16">
+                <circle cx="12" cy="5" r="1" />
+                <circle cx="19" cy="5" r="1" />
+                <circle cx="5" cy="5" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="19" r="1" />
+                <circle cx="19" cy="19" r="1" />
+                <circle cx="5" cy="19" r="1" />
+              </svg>
+              <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Frequently Asked Questions</h1>
+            </div>
+            <div class="px-14 py-4">
+              <div x-data x-init="$store.faqData.init()">
+                <div class="space-y-4">
+                  <template x-for="(question, index) in $store.faqData.questions" :key="index">
+                    <div class="border border-gray-200 rounded-lg">
+                      <button
+                        @click="question.isOpen = !question.isOpen"
+                        class="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 focus:outline-none"
+                      >
+                        <span class="font-medium" x-text="question.panel_title"></span>
+                        <svg
+                          class="w-5 h-5 text-gray-500"
+                          :class="{'transform rotate-180': question.isOpen}"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </button>
+                      <div
+                        x-show="question.isOpen"
+                        x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="opacity-0 transform scale-95"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="opacity-100 transform scale-100"
+                        x-transition:leave-end="opacity-0 transform scale-95"
+                        class="p-4 bg-gray-50"
+                      >
+                        <p x-text="question.panel_content"></p>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+
+      <!-- Why Tourista End -->
+
+      <!-- Bottom Starts -->
+      <%- include('partials/Bottom') %>
+      <!-- Bottom Ends -->
+    </main>
+
+<script src="public/js/faq.js"></script>
+<%- include('partials/Footer') %>
+

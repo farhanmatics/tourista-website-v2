@@ -70,6 +70,14 @@ app.get("/countries", (req, res) => {
   res.render("countries");
 });
 
+app.get("/faq", (req, res) => {
+  res.render("faq");
+});
+
+app.get("/documents", (req, res) => {
+  res.render("documents");
+});
+
 app.get("/expert", csrfProtect, (req, res) => {
   console.log("Token to Browser/form: " + req.csrfToken());
   res.render("expert", { csrfToken: req.csrfToken() });

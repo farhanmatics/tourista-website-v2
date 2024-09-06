@@ -1,0 +1,59 @@
+<%- include('partials/Header') %>
+
+    <main class="font-[Onest]">
+      <%- include('partials/menu') %>
+     
+      <!-- About Tourista -->
+      <section>
+        
+          <div class="flex flex-col">
+            <div class="md:py-30 mt-10 flex justify-start px-10 py-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#8A52BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip -mt-4" opacity="0.16">
+                <circle cx="12" cy="5" r="1" />
+                <circle cx="19" cy="5" r="1" />
+                <circle cx="5" cy="5" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="19" r="1" />
+                <circle cx="19" cy="19" r="1" />
+                <circle cx="5" cy="19" r="1" />
+              </svg>
+              <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Basic Documents for Travel</h1>
+            </div>
+            <div class="px-14 py-4">
+              <div x-data="{ language: 'bn' }" x-init="$store.docChecklistData.fetchChecklist()">
+                <div class="mb-4 text-right">
+                  <button @click="language = language === 'bn' ? 'en' : 'bn'" class="text-blue-600 hover:underline">
+                    <span x-text="language === 'bn' ? 'Switch to English' : 'বাংলায় দেখুন'"></span>
+                  </button>
+                </div>
+                <div class="space-y-6">
+                  <template x-for="(item, index) in $store.docChecklistData.checklist" :key="item.statement.bn">
+                    <div class="bg-[#7039aa] text-white shadow-md rounded-lg p-6">
+                      <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-white text-[#7039aa] rounded-full flex items-center justify-center font-bold mr-3">
+                          <span x-text="index + 1"></span>
+                        </div>
+                        <h2 class="text-xl font-semibold" x-text="item.statement[language]"></h2>
+                      </div>
+                      <p class="text-gray-200 ml-11" x-text="item.type[language]"></p>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+
+      <!-- Why Tourista End -->
+
+      <!-- Bottom Starts -->
+      <%- include('partials/Bottom') %>
+      <!-- Bottom Ends -->
+    </main>
+
+<script src="/public/js/docchecklist.js"></script>
+<%- include('partials/Footer') %>
+
