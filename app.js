@@ -66,6 +66,10 @@ app.get("/categories", (req, res) => {
   res.render("categories");
 });
 
+app.get("/countries", (req, res) => {
+  res.render("countries");
+});
+
 app.get("/expert", csrfProtect, (req, res) => {
   console.log("Token to Browser/form: " + req.csrfToken());
   res.render("expert", { csrfToken: req.csrfToken() });

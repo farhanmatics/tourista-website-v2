@@ -3,7 +3,7 @@ document.addEventListener('alpine:init', () => {
         countries: [],
         async init() {
             try {
-                const response = await fetch('/pageprops.json');
+                const response = await fetch('/public/pageprops.json');
                 const data = await response.json();
                 this.countries = data.countries;
             } catch (error) {
