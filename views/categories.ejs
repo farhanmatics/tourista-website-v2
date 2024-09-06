@@ -1,0 +1,63 @@
+<%- include('partials/Header') %>
+
+    <main class="font-[Onest]">
+      <%- include('partials/menu') %>
+     
+      <!-- About Tourista -->
+      <section>
+        
+          <div class="flex flex-col">
+            <div class="md:py-30 mt-10 flex justify-start px-10 py-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#8A52BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip -mt-4" opacity="0.16">
+                <circle cx="12" cy="5" r="1" />
+                <circle cx="19" cy="5" r="1" />
+                <circle cx="5" cy="5" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="19" r="1" />
+                <circle cx="19" cy="19" r="1" />
+                <circle cx="5" cy="19" r="1" />
+              </svg>
+              <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Visa Categories</h1>
+            </div>
+            <div class="px-14 py-4">
+              <div x-data x-init="$store.visaData.init()">
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <template x-for="category in $store.visaData.categories" :key="category.id">
+                          <div class="bg-white rounded-lg shadow-md p-6">
+                              <div class="flex items-center mb-2">
+                                  <img src="/public/img/tourista_icon.png" alt="Tourista Icon" class="w-6 h-6 mr-2">
+                                  <h2 class="text-xl font-semibold" x-text="category.title"></h2>
+                              </div>
+                              <p class="text-sm text-gray-600 mb-1">
+                                  <span class="font-medium">Total Validity:</span>
+                                  <span x-text="category.totalValidity || 'N/A'"></span>
+                              </p>
+                              <p class="text-sm text-gray-600 mb-1">
+                                  <span class="font-medium">Period of Stay:</span>
+                                  <span x-text="category.periodOfStay || 'N/A'"></span>
+                              </p>
+                              <p class="text-sm text-gray-600">
+                                  <span class="font-medium">Embassy Processing Time:</span>
+                                  <span x-text="category.embassyProcessingTime || 'N/A'"></span>
+                              </p>
+                          </div>
+                      </template>
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+
+      <!-- Why Tourista End -->
+
+      <!-- Bottom Starts -->
+      <%- include('partials/Bottom') %>
+      <!-- Bottom Ends -->
+    </main>
+
+<script src="public/js/categories.js"></script>
+<%- include('partials/Footer') %>
+
