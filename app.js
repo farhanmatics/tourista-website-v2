@@ -78,6 +78,14 @@ app.get("/documents", (req, res) => {
   res.render("documents");
 });
 
+app.get("/visa/:slug", (req, res) => {
+  res.render("visa");
+});
+
+app.get("/travel-confidently-from-bangladesh", (req, res) => {
+  res.render("confident");
+});
+
 app.get("/expert", csrfProtect, (req, res) => {
   console.log("Token to Browser/form: " + req.csrfToken());
   res.render("expert", { csrfToken: req.csrfToken() });
@@ -93,9 +101,7 @@ app.use((req, res, next) => {
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
-  res.json({
-    message: error.message,
-  });
+  res.render("404");
 });
 
 module.exports = app;
