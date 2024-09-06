@@ -21,7 +21,7 @@
               </svg>
               <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Basic Documents for Travel</h1>
             </div>
-            <div class="px-14 py-4">
+            <div class="md:px-10 py-4 px-4">
               <div x-data="{ language: 'bn' }" x-init="$store.docChecklistData.fetchChecklist()">
                 <div class="mb-4 text-right">
                   <button @click="language = language === 'bn' ? 'en' : 'bn'" class="text-blue-600 hover:underline">
@@ -48,7 +48,7 @@
       </section>
 
       <!-- Why Tourista End -->
-
+      <%- include('partials/contact') %>
       <!-- Bottom Starts -->
       <%- include('partials/Bottom') %>
       <!-- Bottom Ends -->

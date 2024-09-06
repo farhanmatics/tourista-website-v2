@@ -21,7 +21,7 @@
               </svg>
               <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Frequently Asked Questions</h1>
             </div>
-            <div class="px-14 py-4">
+            <div class="md:px-10 py-4 px-4">
               <div x-data x-init="$store.faqData.init()">
                 <div class="space-y-4">
                   <template x-for="(question, index) in $store.faqData.questions" :key="index">
@@ -63,7 +63,7 @@
       </section>
 
       <!-- Why Tourista End -->
-
+      <%- include('partials/contact') %>
       <!-- Bottom Starts -->
       <%- include('partials/Bottom') %>
       <!-- Bottom Ends -->

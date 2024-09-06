@@ -1,6 +1,9 @@
 document.addEventListener('alpine:init', () => {
     Alpine.store('docChecklistData', {
         checklist: [],
+        init() {
+            this.fetchChecklist();
+        },
         async fetchChecklist() {
             try {
                 const response = await fetch('/public/docchecklist.json');

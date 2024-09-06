@@ -91,6 +91,14 @@ app.get("/expert", csrfProtect, (req, res) => {
   res.render("expert", { csrfToken: req.csrfToken() });
 });
 
+app.get("/privacy-policy", (req, res) => {
+  res.render("privacy");
+});
+
+app.get("/terms-and-conditions", (req, res) => {
+  res.render("terms");
+});
+
 //app.use("/api/", formParser, csrfProtect, apiRoutes);
 
 app.use((req, res, next) => {
