@@ -7,8 +7,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const csrf = require("csurf");
-
+const session = require('express-session');
+const isAuthenticated = require('./auth');
 const homeController = require("./controllers/homeController");
+const addUserToLocals = require('./middleware/userMiddleware');
 
 
 const csrfProtect = csrf({ cookie: true });
@@ -55,6 +57,14 @@ app.use((req, res, next) => {
 //routes
 
 //app.get("*", checkUser);
+app.use(session({
+  secret: 'tailwind',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+// Add this line after your session middleware
+app.use(addUserToLocals);
 
 app.get("/", homeController.home_get);
 app.get("/blog/:id", homeController.blogs_get);
@@ -104,6 +114,36 @@ app.get("/rich-text-editor", (req, res) => {
   res.render("rich-text-editor");
 });
 //app.use("/api/", formParser, csrfProtect, apiRoutes);
+
+
+
+app.get('/dashboard', isAuthenticated, (req, res) => {
+  res.render('dashboard', { user: req.session.user });
+});
+
+app.get('/login', (req, res) => {
+  console.log(req.session);
+  if(req.session.user){
+    res.redirect('/dashboard');
+  }else{
+    res.render('login');
+  }
+});
+
+app.post('/login', homeController.login_post);
+
+app.get('/signup', (req, res) => {
+  res.render('signup', { error: null });
+});
+
+app.post('/signup', homeController.signup_post);
+
+app.post('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
