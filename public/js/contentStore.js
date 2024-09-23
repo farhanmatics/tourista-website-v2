@@ -68,6 +68,16 @@ document.addEventListener('alpine:init', () => {
                     container.querySelectorAll('strong').forEach(strong => {
                         strong.classList.add('font-bold');
                     });
+
+                    // Apply Tailwind classes to unordered lists
+                    container.querySelectorAll('ul').forEach(ul => {
+                        ul.classList.add('list-disc', 'pl-5', 'space-y-2', 'mb-4');
+                    });
+
+                    // Apply Tailwind classes to list items
+                    container.querySelectorAll('li').forEach(li => {
+                        li.classList.add('text-gray-700');
+                    });
                 }
             }, 0);
         }

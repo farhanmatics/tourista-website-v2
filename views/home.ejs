@@ -18,7 +18,7 @@
               <div class="relative">
                 <select id="from" name="from" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 md:text-lg focus:border-blue-500 focus:outline-none">
                   <option value="Bangladesh">Bangladesh - BD</option>
-                  <option value="India">India - IN</option>
+                  <!-- <option value="India">India - IN</option> -->
                   <!-- Add more options as needed -->
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
@@ -30,10 +30,11 @@
             </div>
             <div class="mx-2 w-full">
               <label for="to" class="mb-2 ml-2 block md:text-lg md:font-semibold">Where am I Going?</label>
-              <div class="relative">
-                <select id="to" name="to" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 md:text-lg text-gray-600 focus:border-blue-500 focus:outline-none">
-                  <option value="Thailand">Thailand - TH</option>
-                  <option value="Italy">Italy - IT</option>
+              <div class="relative" x-data="countryDropdown()">
+                <select id="to" name="to" class="w-full appearance-none rounded-3xl border border-purple-950 bg-white py-3 pl-3 pr-10 md:text-lg text-gray-600 focus:border-blue-500 focus:outline-none" x-model="selectedCountry">
+                  <template x-for="country in countries" :key="country.id">
+                    <option x-text="`${country.visa_country} - ${country.iso3_code}`"></option>
+                  </template>
                   <!-- Add more options as needed -->
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
@@ -337,5 +338,15 @@
 
 <script src="public/js/home.js"></script>
 <script src="public/js/common.js"></script>
+<script>
+  import { countries } from '/public/js/home.js';
+
+  function countryDropdown() {
+    return {
+      countries: countries,
+      selectedCountry: ''
+    };
+  }
+</script>
 <%- include('partials/Footer') %>
 
