@@ -10,6 +10,9 @@ const csrf = require("csurf");
 
 const homeController = require("./controllers/homeController");
 
+const clerkMiddleware = require('./clerkMiddleware');
+const { ClerkExpressWithAuth } = require('@clerk/clerk-sdk-node');
+
 const csrfProtect = csrf({ cookie: true });
 const formParser = bodyParser.urlencoded({ extended: false });
 
@@ -23,6 +26,12 @@ app.use(cookieParser());
 app.use("/uploads", express.static("uploads"));
 app.use("/js", express.static("public/js"));
 app.use("/public", express.static("public"));
+
+// Clerk middleware
+app.use(ClerkExpressWithAuth({
+  apiKey: 'your-clerk-api-key',
+  frontendApi: 'your-clerk-frontend-api',
+}));
 
 // Set Templating Engine
 
@@ -99,7 +108,14 @@ app.get("/terms-and-conditions", (req, res) => {
   res.render("terms");
 });
 
+app.get("/rich-text-editor", (req, res) => {
+  res.render("rich-text-editor");
+});
 //app.use("/api/", formParser, csrfProtect, apiRoutes);
+
+app.get('/dashboard', clerkMiddleware, (req, res) => {
+     res.render('dashboard', { user: req.auth.user });
+   });
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
