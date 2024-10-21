@@ -25,7 +25,7 @@
                class="w-auto h-full md:h-64 object-cover rounded-lg">
         </div>
         
-        <div x-html="$store.blogStore.getBlogDetails().post" class="prose max-w-none"></div>
+        <div x-html="$store.blogStore.getBlogDetails().content"></div>
         
         <div class="mt-6 text-sm text-gray-600">
           <p>Created: <span x-text="new Date($store.blogStore.getBlogDetails().created_at).toLocaleDateString()"></span></p>
@@ -33,10 +33,6 @@
         </div>
       </div>
     </template>
-    
-    <div x-show="!$store.blogStore.loading && !$store.blogStore.getBlogDetails()" class="text-center py-8">
-      <p class="text-xl text-red-600">Error: Blog post not found</p>
-    </div>
   </div>
 
   <%- include('partials/contact') %>

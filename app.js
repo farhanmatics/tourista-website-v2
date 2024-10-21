@@ -89,6 +89,10 @@ app.get("/documents", (req, res) => {
   res.render("documents");
 });
 
+app.get("/countrywise-visa-details", (req, res) => {
+  res.render("countrywise");
+});
+
 app.get("/visa/:slug", (req, res) => {
   res.render("visa");
 });

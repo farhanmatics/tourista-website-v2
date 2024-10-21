@@ -1,0 +1,65 @@
+<%- include('partials/Header') %>
+
+    <main class="font-[Onest]">
+      <%- include('partials/menu') %>
+     
+      <!-- About Tourista -->
+      <section>
+        
+          <div class="flex flex-col">
+            <div class="md:py-30 mt-10 flex justify-start px-10 py-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#8A52BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip -mt-4" opacity="0.16">
+                <circle cx="12" cy="5" r="1" />
+                <circle cx="19" cy="5" r="1" />
+                <circle cx="5" cy="5" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="19" r="1" />
+                <circle cx="19" cy="19" r="1" />
+                <circle cx="5" cy="19" r="1" />
+              </svg>
+              <h1 class="-ml-11 mt-5 text-3xl font-bold md:text-4xl">Visa by Country</h1>
+            </div>
+            <div class="md:px-10 py-4 px-4">
+              <div x-data="{
+                init() {
+                  Alpine.store('blogStore').fetchBlogs();
+                }
+              }" class="container mx-auto px-4">
+                <div x-show="$store.blogStore.loading" class="text-center py-8">
+                  <p class="text-xl">Loading countries...</p>
+                </div>
+                
+                <div x-show="$store.blogStore.error" class="text-center py-8">
+                  <p class="text-xl text-red-500" x-text="$store.blogStore.error"></p>
+                </div>
+
+                <div x-show="!$store.blogStore.loading && !$store.blogStore.error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <template x-for="blog in $store.blogStore.getBlogs()" :key="blog.id">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                      <img :src="blog.thumbnail_image" :alt="blog.thumbnail_image_alt" class="w-full h-48 object-cover">
+                      <div class="p-4">
+                        <h2 x-text="blog.title" class="text-xl font-semibold mb-2 line-clamp-2"></h2>
+                        <p x-text="blog.meta_title" class="text-gray-600 text-sm mb-4 line-clamp-3"></p>
+                        <a :href="'/blog/' + blog.id" class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300">Read More</a>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+
+      <!-- Why Tourista End -->
+      <%- include('partials/contact') %>
+      <!-- Bottom Starts -->
+      <%- include('partials/Bottom') %>
+      <!-- Bottom Ends -->
+    </main>
+
+<script src="public/js/countrywise.js"></script>
+<%- include('partials/Footer') %>
+
