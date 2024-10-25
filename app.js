@@ -67,7 +67,7 @@ app.use(session({
 app.use(addUserToLocals);
 
 app.get("/", homeController.home_get);
-app.get("/blog/:id", homeController.blogs_get);
+app.get("/blog/:id/:slug", homeController.blogs_get);
 
 app.get("/about", (req, res) => {
   res.render("about");

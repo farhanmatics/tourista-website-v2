@@ -42,7 +42,10 @@
                       <div class="p-4">
                         <h2 x-text="blog.title" class="text-xl font-semibold mb-2 line-clamp-2"></h2>
                         <p x-text="blog.meta_title" class="text-gray-600 text-sm mb-4 line-clamp-3"></p>
-                        <a :href="'/blog/' + blog.id" class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300">Read More</a>
+                        <a :href="'/blog/' + blog.id + '/' + blog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')" 
+                           class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300">
+                          Read More
+                        </a>
                       </div>
                     </div>
                   </template>
