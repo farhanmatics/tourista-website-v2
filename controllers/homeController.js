@@ -4,6 +4,9 @@ const { response } = require("express");
 const session = require('express-session');
 const apiUrl = process.env.API_URL;
 
+const http = require('http');
+const https = require('https');
+
 
 module.exports.home_get = async (req, res) => {
   console.log("here");
@@ -25,13 +28,47 @@ module.exports.blogs_get = async (req, res) => {
   const id = req.params.id;
   console.log("Blog ID:", id);
 
-  // TODO: Fetch blog data using the id
-  // For now, we'll pass a dummy blog object
-  const blog = {
-    id: id
-  };
+  const apiUrl = `https://tourista-monitor.netlify.app/.netlify/functions/api/blog/${id}`;
 
-  res.render("blog", { blog: blog });
+  https.get(apiUrl, (apiRes) => {
+    let data = '';
+
+    apiRes.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    apiRes.on('end', () => {
+      if (apiRes.statusCode === 200) {
+        try {
+          const blogData = JSON.parse(data);
+          res.render("blog", { blog: blogData });
+        } catch (error) {
+          console.error("Error parsing blog data:", error);
+          renderErrorPage(res, id);
+        }
+      } else {
+        console.error(`HTTP error! status: ${apiRes.statusCode}`);
+        renderErrorPage(res, id);
+      }
+    });
+  }).on('error', (error) => {
+    console.error("Error fetching blog data:", error);
+    renderErrorPage(res, id);
+  });
+};
+
+function renderErrorPage(res, id) {
+  res.render("blog", { 
+    blog: { 
+      id: id,
+      title: "Error",
+      content: "Unable to fetch blog data. Please try again later.",
+      meta_title: "Error | TOURISTA",
+      meta_description: "An error occurred while fetching the blog post.",
+      meta_keywords: "",
+      header_image: ""
+    } 
+  });
 };
 
 

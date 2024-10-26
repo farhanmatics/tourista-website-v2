@@ -1,44 +1,189 @@
-<%- include('partials/Header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= blog.meta_title || 'TOURISTA | Travel Made Easy' %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<%= blog.meta_description || 'Best & Fastest Visa Processing Service in Bangladesh, Our platform offers a seamless experience for obtaining visas across multiple categories and countries, including Tourist, Medical, Student, Investment, Business, Residency, Digital Nomad and more.' %>">
+    <meta name="keywords" content="<%= blog.meta_keywords || '' %>">
+    <meta property="og:title" content="<%= blog.meta_title || 'TOURISTA | VISA MADE EASY' %>"/>
+    <meta property="og:image" content="<%= blog.header_image || 'https://i.ibb.co/6BmRgSx/tourista-desc-img.png' %>"/>
+    <meta property="og:description" content="<%= blog.meta_description || '100% Error Free & Fastest Visa Processing Service in Bangladesh, Our platform offers a seamless experience for obtaining visas across multiple categories and countries, including Tourist, Medical, Student, Investment, Business, Residency, Digital Nomad and more.' %>"/>
+    <meta property="og:url" content="https://tourista.co"/>
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kaushan+Script&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="public/css/tailwind.min.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
 
-<main class="font-[Onest]" x-data="{ 
-  blogId: '<%= blog.id %>', // This is the ID passed from res.render
-  init() {
-    $store.blogStore.fetchBlogDetails(this.blogId);
+
+    <!-- Alpine Plugins -->
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/public/js/menu.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>  
+    
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              backgroundImage: {
+                'hero-pattern': "url('/public/img/picoballz.webp')",
+              },
+              colors: {
+                clifford: '#da373d',
+                tourista: '#FFCB0B',
+                viacolor: '#E48FA0',
+                tourPurple: '#7039aa',
+                lightPurple: '#8a52ba',
+                blueSky: '#79def2',
+                darkSky: '#1c0f36'
+              },
+              animation: {
+                'bounce-slow': 'bounce 3s linear infinite',
+                "text-gradient": "text-gradient 1.5s linear infinite",
+              },
+              keyframes: {
+                  "text-gradient": {
+                    "to": {
+                      "backgroundPosition": "200% center"
+                  }
+                }
+              }
+            }
+          }
+        }
+      </script>
+
+    <!-- <script src="public/js/menu.js"></script> -->
+    <style>
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+
+      [x-cloak] { display: none !important; }
+    </style>
+    <script>
+      document.addEventListener('alpine:init', () => {
+          Alpine.store('globalData', {
+              uri: window.location.pathname,
+          })
+          console.log('current path: ',window.location.pathname)
+      })
+    </script>
+
+<script>
+  function processContent(content) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+
+    // Add a class to increase font size to the container
+    tempDiv.classList.add('text-lg');
+
+    // Apply Tailwind classes to headings
+    tempDiv.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
+      heading.classList.add('font-bold', 'mb-4', 'mt-6');
+      if (heading.tagName === 'H1') heading.classList.add('text-4xl');
+      if (heading.tagName === 'H2') heading.classList.add('text-3xl');
+      if (heading.tagName === 'H3') heading.classList.add('text-2xl');
+    });
+
+    // Apply Tailwind classes to paragraphs
+    tempDiv.querySelectorAll('p').forEach(p => {
+      p.classList.add('mb-4', 'text-gray-700', 'text-lg');
+    });
+
+    // Apply Tailwind classes to lists
+    tempDiv.querySelectorAll('ul, ol').forEach(list => {
+      list.classList.add('mb-4', 'ml-6');
+      list.querySelectorAll('li').forEach(li => {
+        li.classList.add('mb-2');
+      });
+    });
+
+    // Apply Tailwind classes to links
+    tempDiv.querySelectorAll('a').forEach(a => {
+      a.classList.add('text-blue-600', 'hover:underline');
+    });
+
+    // Apply Tailwind classes to emphasis and strong
+    tempDiv.querySelectorAll('em').forEach(em => {
+      em.classList.add('italic');
+    });
+    tempDiv.querySelectorAll('strong').forEach(strong => {
+      strong.classList.add('font-bold');
+    });
+
+    // Apply Tailwind classes to unordered lists
+    tempDiv.querySelectorAll('ul').forEach(ul => {
+      ul.classList.add('list-disc', 'pl-5', 'space-y-2', 'mb-4');
+    });
+
+    // Apply Tailwind classes to list items
+    tempDiv.querySelectorAll('li').forEach(li => {
+      li.classList.add('text-gray-700', 'text-lg');
+    });
+
+    return tempDiv.innerHTML;
   }
-}" x-init="init">
-  <%- include('partials/menu') %>
-  
-  <div class="container mx-auto px-4 py-8">
-    <div x-show="$store.blogStore.loading" class="text-center py-8">
-      <p class="text-xl">Loading blog content...</p>
+  </script>
+  <link rel="stylesheet" href="/public/css/home.css">
+ 
+</head>
+<body class="antialiased bg-body text-body font-body">
+    <div class="">
+        <main class="font-[Onest]">
+            <%- include('partials/menu') %>
+            
+            <div class="container mx-auto px-4 py-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6"><%= blog.title %></h1>
+                
+                <div class="mb-8">
+                    <img src="<%= blog.header_image %>" 
+                         alt="<%= blog.title %>" 
+                         class="w-auto h-full md:h-64 object-cover rounded-lg">
+                </div>
+                
+                <div id="blogContent">
+                    <%- blog.post %>
+                </div>
+                
+                <div class="mt-6 text-sm text-gray-600">
+                    <p>Created: <%= new Date(blog.created_at).toLocaleDateString() %></p>
+                    <p>Updated: <%= new Date(blog.updated_at).toLocaleDateString() %></p>
+                </div>
+            </div>
+
+            <%- include('partials/contact') %>
+            <%- include('partials/Bottom') %>
+        </main>
     </div>
+
+    <%- include('partials/Footer') %>
     
-    <div x-show="$store.blogStore.error" x-text="$store.blogStore.error" class="text-center py-8 text-red-600"></div>
-    
-    <template x-if="$store.blogStore.getBlogDetails()">
-      <div>
-        <h1 x-text="$store.blogStore.getBlogDetails().title" class="text-3xl md:text-4xl font-bold mb-6"></h1>
-        
-        <div class="mb-8">
-          <img :src="$store.blogStore.getBlogDetails().header_image" 
-               :alt="$store.blogStore.getBlogDetails().header_image_alt" 
-               class="w-auto h-full md:h-64 object-cover rounded-lg">
-        </div>
-        
-        <div x-html="$store.blogStore.getBlogDetails().content"></div>
-        
-        <div class="mt-6 text-sm text-gray-600">
-          <p>Created: <span x-text="new Date($store.blogStore.getBlogDetails().created_at).toLocaleDateString()"></span></p>
-          <p>Updated: <span x-text="new Date($store.blogStore.getBlogDetails().updated_at).toLocaleDateString()"></span></p>
-        </div>
-      </div>
-    </template>
-  </div>
-
-  <%- include('partials/contact') %>
-  <%- include('partials/Bottom') %>
-</main>
-
-<script src="/public/js/blog.js"></script>
-<%- include('partials/Footer') %>
-
+    <script>
+        // Process the content after the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogContentElement = document.getElementById('blogContent');
+            const processedContent = processContent(blogContentElement.innerHTML);
+            blogContentElement.innerHTML = processedContent;
+        });
+    </script>
+</body>
+</html>
